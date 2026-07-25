@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased overflow-y-scroll;
+  }
+}
+
+@layer utilities {
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Swiper overrides */
+.swiper-pagination-bullet {
+  background-color: theme('colors.gray.300') !important;
+  opacity: 1 !important;
+  transition: all 0.2s ease !important;
+  width: 8px !important;
+  height: 8px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #3665f3 !important;
+  width: 24px !important;
+  border-radius: 4px !important;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: theme('colors.gray.900') !important;
+  background: white;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1) !important;
+  opacity: 0;
+  transition: opacity 0.3s ease !important;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 16px !important;
+  font-weight: bold;
+}
+
+.group:hover .swiper-button-prev,
+.group:hover .swiper-button-next {
+  opacity: 1;
+}
+
+.swiper-button-disabled {
+  opacity: 0 !important;
+}

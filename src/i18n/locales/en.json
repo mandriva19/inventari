@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "search": "Search products...",
+    "contact": "Contact",
+    "call": "Call",
+    "chat": "Chat"
+  },
+  "topbar": {
+    "contact": "Contact Us"
+  },
+  "filters": {
+    "all": "All",
+    "available": "Available",
+    "limited": "Limited"
+  },
+  "product": {
+    "condition": "Condition",
+    "quantity": "Quantity",
+    "location": "Location",
+    "category": "Category",
+    "description": "Description",
+    "call": "Call Now",
+    "chat": "Chat",
+    "back": "Back to Catalog",
+    "similar": "Similar Items",
+    "condition_good": "Good",
+    "condition_ok": "Fair",
+    "condition_used": "Used",
+    "status_available": "Available",
+    "status_limited": "Limited",
+    "status_sold": "Sold"
+  },
+  "home": {
+    "title": "Premium Restaurant Equipment",
+    "subtitle": "Quality commercial furniture and equipment at great prices. Located in Tbilisi, Georgia.",
+    "items_found": "{{count}} items found",
+    "no_results": "No items match your filters.",
+    "no_results_hint": "Try adjusting or clearing the filters.",
+    "clear_filters": "Clear filters",
+    "load_more": "Load more"
+  },
+  "footer": {
+    "tagline": "Premium commercial furniture and equipment for restaurants, cafes, and hospitality businesses in Tbilisi, Georgia.",
+    "quick_links": "Quick Links",
+    "contact": "Contact",
+    "all_rights": "All rights reserved.",
+    "location": "Tbilisi, Georgia"
+  },
+  "meta": {
+    "site_name": "Inventari",
+    "home_title": "Premium Restaurant Equipment — Tbilisi",
+    "home_desc": "Browse quality commercial furniture and equipment at great prices in Tbilisi, Georgia."
+  }
+}

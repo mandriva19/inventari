@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "search": "Ürün ara...",
+    "contact": "İletişim",
+    "call": "Ara",
+    "chat": "Sohbet"
+  },
+  "topbar": {
+    "contact": "Bize Ulaşın"
+  },
+  "filters": {
+    "all": "Tümü",
+    "available": "Mevcut",
+    "limited": "Sınırlı"
+  },
+  "product": {
+    "condition": "Durum",
+    "quantity": "Miktar",
+    "location": "Konum",
+    "category": "Kategori",
+    "description": "Açıklama",
+    "call": "Şimdi Ara",
+    "chat": "Sohbet Et",
+    "back": "Kataloğa Dön",
+    "similar": "Benzer Ürünler",
+    "condition_good": "İyi",
+    "condition_ok": "Orta",
+    "condition_used": "Kullanılmış",
+    "status_available": "Mevcut",
+    "status_limited": "Sınırlı",
+    "status_sold": "Satıldı"
+  },
+  "home": {
+    "title": "Premium Restoran Ekipmanları",
+    "subtitle": "Tiflis, Gürcistan'da uygun fiyata kaliteli ticari mobilya ve ekipmanlar.",
+    "items_found": "{{count}} ürün bulundu",
+    "no_results": "Filtrelerinizle eşleşen ürün bulunamadı.",
+    "no_results_hint": "Filtreleri değiştirmeyi veya temizlemeyi deneyin.",
+    "clear_filters": "Filtreleri Temizle",
+    "load_more": "Daha Fazla Yükle"
+  },
+  "footer": {
+    "tagline": "Tiflis'teki restoranlar, kafeler ve konaklama işletmeleri için premium ticari mobilya.",
+    "quick_links": "Hızlı Bağlantılar",
+    "contact": "İletişim",
+    "all_rights": "Tüm hakları saklıdır.",
+    "location": "Tiflis, Gürcistan"
+  },
+  "meta": {
+    "site_name": "Inventari",
+    "home_title": "Premium Restoran Ekipmanları — Tiflis",
+    "home_desc": "Tiflis'te uygun fiyata kaliteli ticari mobilya ve ekipmanlar."
+  }
+}
