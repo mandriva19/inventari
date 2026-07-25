@@ -58,7 +58,7 @@ export function useProducts(filters) {
         .fetch(query, params)
         .then(({ items, total: t }) => {
           if (cancelled) return;
-          setProducts((prev) => (page === 1 ? items : [...prev, ...items]));
+          console.log("SANITY FETCH RES:", items); setProducts((prev) => (page === 1 ? items : [...prev, ...items]));
           setTotal(t);
           setIsLoading(false);
         })

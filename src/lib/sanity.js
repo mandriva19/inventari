@@ -7,7 +7,7 @@ export const sanityClient = createClient({
   dataset:    import.meta.env.VITE_SANITY_DATASET    || 'production',
   apiVersion: import.meta.env.VITE_SANITY_API_VERSION || '2024-01-01',
   token:      import.meta.env.VITE_SANITY_TOKEN      || undefined,
-  useCdn:     true, // cached reads — fast for public catalog
+  useCdn:     false, // Bypassing CDN to avoid CORS caching issues
   perspective: 'published',
 });
 
