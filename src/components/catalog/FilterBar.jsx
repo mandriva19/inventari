@@ -1,17 +1,18 @@
 import { useTranslation } from 'react-i18next';
-import { CATEGORIES } from '../../lib/mockData';
 import { useLocalizedField } from '../../hooks/useLocalizedField';
+import { useCategories } from '../../hooks/useCategories';
 
 const STATUS_FILTERS = ['available', 'limited'];
 
 export default function FilterBar({ activeCategory, activeStatus, onCategoryChange, onStatusChange, isScrolled }) {
   const { t } = useTranslation();
   const localize = useLocalizedField();
+  const { categories } = useCategories();
 
   return (
     <div
       className={`sticky z-40 bg-white/90 backdrop-blur-md border-b border-gray-200 transition-all duration-300 ${
-        isScrolled ? 'top-8 py-2' : 'top-11 py-3'
+        isScrolled ? 'top-8 py-2' : 'top-32 py-3'
       }`}
       role="navigation"
       aria-label="Product filters"
@@ -32,7 +33,7 @@ export default function FilterBar({ activeCategory, activeStatus, onCategoryChan
             >
               {t('filters.all')}
             </button>
-            {CATEGORIES.map((cat) => (
+            {categories.map((cat) => (
               <button
                 key={cat.id}
                 id={`filter-category-${cat.id}`}

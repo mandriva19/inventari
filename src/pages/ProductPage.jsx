@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useLocalizedField } from '../hooks/useLocalizedField';
-import { MOCK_PRODUCTS, CATEGORIES } from '../lib/mockData';
+import { useProduct } from '../hooks/useProduct';
+import { CATEGORIES } from '../lib/mockData';
 
 import ImageSwiper    from '../components/product/ImageSwiper';
 import { MetaBadge, MetaGrid } from '../components/product/MetaBadge';
@@ -17,8 +18,17 @@ const BackIcon = () => (
 export default function ProductPage({ slug }) {
   const { t } = useTranslation();
   const localize = useLocalizedField();
+  const { product, isLoading } = useProduct(slug);
 
-  const product = MOCK_PRODUCTS.find((p) => p.slug === slug);
+  if (isLoading) {
+    return (
+      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" id="main-content">
+        <div className="flex justify-center items-center h-64">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#3665f3]"></div>
+        </div>
+      </main>
+    );
+  }
 
   /* ── 404 ── */
   if (!product) {
@@ -37,7 +47,8 @@ export default function ProductPage({ slug }) {
     );
   }
 
-  const category = CATEGORIES.find((c) => c.id === product.categoryId);
+  const category = product.category || CATEGORIES.find((c) => c.id === product.categoryId);
+  const categoryLabel = category?.title || category?.label;
 
   /* ── Meta grid items ── */
   const metaItems = [
@@ -62,7 +73,7 @@ export default function ProductPage({ slug }) {
     },
     {
       label: t('product.category'),
-      value: category ? localize(category.label) : null,
+      value: <span className="text-gray-900 font-medium">{categoryLabel ? localize(categoryLabel) : '—'}</span>,
     },
   ];
 
@@ -131,7 +142,7 @@ export default function ProductPage({ slug }) {
       <div className="mt-16 lg:mt-24">
         <SimilarProducts
           categoryId={product.categoryId}
-          excludeId={product._id}
+          slug={product.slug}
           limit={4}
         />
       </div>

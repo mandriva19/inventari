@@ -15,7 +15,7 @@ export default function ProductCard({ product }) {
   const contact = getContactForLang(lang);
   const { openContactModal } = useContactModal();
 
-  const category = CATEGORIES.find((c) => c.id === product.categoryId);
+  const category = product.category || CATEGORIES.find((c) => c.id === product.categoryId);
 
   const chatMsg = encodeURIComponent(
     `Hi, I'm interested in: ${localize(product.title)} (ID: ${product._id})`

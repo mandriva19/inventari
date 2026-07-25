@@ -46,7 +46,7 @@ function AppShell() {
 
       <TopBar isScrolled={isScrolled} />
 
-      <div className="pt-11 min-h-screen flex flex-col">
+      <div className="pt-32 min-h-screen flex flex-col">
         <Routes>
           <Route path="/"              element={<HomePage    isScrolled={isScrolled} />} />
           <Route path="/product/:slug" element={<ProductPageWrapper />} />

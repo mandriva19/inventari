@@ -1,29 +1,17 @@
 import { useTranslation } from 'react-i18next';
 import ProductCard from '../catalog/ProductCard';
-import { MOCK_PRODUCTS } from '../../lib/mockData';
+import { useSimilarProducts } from '../../hooks/useSimilarProducts';
 
 /**
  * SimilarProducts — shows up to `limit` products from the same category.
  *
- * @param {{ categoryId: string, excludeId: string, limit?: number }} props
+ * @param {{ categoryId: string, slug: string, limit?: number }} props
  */
-export default function SimilarProducts({ categoryId, excludeId, limit = 4 }) {
+export default function SimilarProducts({ categoryId, slug, limit = 4 }) {
   const { t } = useTranslation();
+  const { similar, isLoading } = useSimilarProducts(categoryId, slug, limit);
 
-  const similarByCategory = MOCK_PRODUCTS
-    .filter((p) => p.categoryId === categoryId && p._id !== excludeId);
-  
-  let similar = similarByCategory.slice(0, limit);
-
-  if (similar.length < limit) {
-    const remainingCount = limit - similar.length;
-    const paddingProducts = MOCK_PRODUCTS.filter(
-      (p) => p.categoryId !== categoryId && p._id !== excludeId
-    ).slice(0, remainingCount);
-    similar = [...similar, ...paddingProducts];
-  }
-
-  if (!similar.length) return null;
+  if (isLoading || !similar.length) return null;
 
   return (
     <section className="mt-16 border-t border-gray-100 pt-12" aria-label={t('product.similar')}>

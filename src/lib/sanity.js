@@ -51,6 +51,7 @@ const PRODUCT_CARD_PROJECTION = `
   quantity,
   location ${LOCALIZED_STRING},
   "categoryId": category->slug.current,
+  "category": category->{ "id": slug.current, "label": title ${LOCALIZED_STRING} },
   "images": images[].asset->url
 `;
 
