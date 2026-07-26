@@ -19,7 +19,7 @@
     "location": "Konum",
     "category": "Kategori",
     "description": "Açıklama",
-    "call": "Contact",
+    "call": "Call",
     "chat": "Sohbet Et",
     "back": "Kataloğa Dön",
     "similar": "Benzer Ürünler",
@@ -28,7 +28,8 @@
     "condition_used": "Kullanılmış",
     "status_available": "Mevcut",
     "status_limited": "Sınırlı",
-    "status_sold": "Satıldı"
+    "status_sold": "Satıldı",
+    "contact_cta": "Contact"
   },
   "home": {
     "title": "Premium Restoran Ekipmanları",

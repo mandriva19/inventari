@@ -19,7 +19,7 @@
     "location": "მდებარეობა",
     "category": "კატეგორია",
     "description": "აღწერა",
-    "call": "კონტაქტი",
+    "call": "დარეკვა",
     "chat": "ჩათი",
     "back": "კატალოგში დაბრუნება",
     "similar": "მსგავსი პროდუქტები",
@@ -28,7 +28,8 @@
     "condition_used": "გამოყენებული",
     "status_available": "ხელმისაწვდომი",
     "status_limited": "შეზღუდული",
-    "status_sold": "გაყიდული"
+    "status_sold": "გაყიდული",
+    "contact_cta": "კონტაქტი"
   },
   "home": {
     "title": "პრემიუმ რესტორნის აღჭურვილობა",

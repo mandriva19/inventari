@@ -10,21 +10,21 @@ export default function ContactCTA({ productId, productTitle, size = 'md' }) {
   // Create a pseudo product object if we want to pass context to the modal
   const product = productId ? { _id: productId, title: productTitle } : null;
 
-  // Uniform CTA classes for both sizes: uppercase, large padding, small border radius, simple hover
-  const baseClass = "flex-1 flex items-center justify-center gap-3 bg-[#3665f3] hover:bg-[#2b51c2] text-white font-bold uppercase tracking-wider transition-colors rounded-md shadow-sm w-full cursor-pointer";
+  // Uniform CTA classes for both sizes: uppercase, large padding, simple hover
+  const baseClass = "group w-full flex items-center justify-center gap-3 bg-[#3665f3] text-white font-bold uppercase tracking-wider transition-colors rounded-none cursor-pointer";
   const paddingClass = size === 'lg' ? "py-5 px-6 text-base" : "py-4 px-4 text-sm";
 
   return (
-    <div className={`flex bg-gray-200 ${size === 'lg' ? 'mt-4' : ''}`}>
+    <div className={`w-full ${size === 'lg' ? 'mt-4' : ''}`}>
       <button
         onClick={() => openContactModal(product)}
-        className={`${baseClass} ${paddingClass} m-1`}
-        aria-label={t('product.call')}
+        className={`${baseClass} ${paddingClass}`}
+        aria-label={t('product.contact_cta')}
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
+          <path d="M5 12h14"/><path d="M12 5l7 7-7 7"/>
         </svg>
-        {t('product.call')}
+        {t('product.contact_cta')}
       </button>
     </div>
   );

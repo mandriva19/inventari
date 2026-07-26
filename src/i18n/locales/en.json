@@ -19,7 +19,7 @@
     "location": "Location",
     "category": "Category",
     "description": "Description",
-    "call": "Contact",
+    "call": "Call",
     "chat": "Chat",
     "back": "Back to Catalog",
     "similar": "Similar Items",
@@ -28,7 +28,8 @@
     "condition_used": "Used",
     "status_available": "Available",
     "status_limited": "Limited",
-    "status_sold": "Sold"
+    "status_sold": "Sold",
+    "contact_cta": "Contact"
   },
   "home": {
     "title": "Premium Restaurant Equipment",

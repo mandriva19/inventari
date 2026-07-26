@@ -19,7 +19,7 @@
     "location": "الموقع",
     "category": "الفئة",
     "description": "الوصف",
-    "call": "Contact",
+    "call": "Call",
     "chat": "تواصل عبر الدردشة",
     "back": "العودة إلى الكتالوج",
     "similar": "منتجات مشابهة",
@@ -28,7 +28,8 @@
     "condition_used": "مستعمل",
     "status_available": "متاح",
     "status_limited": "محدود",
-    "status_sold": "تم البيع"
+    "status_sold": "تم البيع",
+    "contact_cta": "Contact"
   },
   "home": {
     "title": "معدات مطاعم فاخرة",

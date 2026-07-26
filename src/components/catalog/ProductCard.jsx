@@ -100,17 +100,17 @@ export default function ProductCard({ product }) {
       </div>
 
       {/* CTA Button */}
-      <div className="flex bg-gray-200">
+      <div className="w-full">
         <button
           id={`card-contact-${product._id}`}
           onClick={(e) => { e.preventDefault(); openContactModal(product); }}
-          className="flex-1 flex items-center justify-center gap-2 bg-[#3665f3] hover:bg-[#2b51c2] text-white px-4 py-3 sm:py-4 text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors cursor-pointer rounded-md shadow-sm m-1"
-          aria-label={`${t('product.call')} — ${localize(product.title)}`}
+          className="group w-full flex items-center justify-center gap-2 bg-[#3665f3] text-white px-4 py-3 sm:py-4 text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors cursor-pointer rounded-none"
+          aria-label={`${t('product.contact_cta')} — ${localize(product.title)}`}
         >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
+            <path d="M5 12h14"/><path d="M12 5l7 7-7 7"/>
           </svg>
-          {t('product.call')}
+          {t('product.contact_cta')}
         </button>
       </div>
     </article>

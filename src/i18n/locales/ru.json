@@ -19,7 +19,7 @@
     "location": "Местоположение",
     "category": "Категория",
     "description": "Описание",
-    "call": "Contact",
+    "call": "Call",
     "chat": "Написать",
     "back": "Назад в каталог",
     "similar": "Похожие товары",
@@ -28,7 +28,8 @@
     "condition_used": "Б/у",
     "status_available": "В наличии",
     "status_limited": "Ограничено",
-    "status_sold": "Продано"
+    "status_sold": "Продано",
+    "contact_cta": "Contact"
   },
   "home": {
     "title": "Профессиональное ресторанное оборудование",

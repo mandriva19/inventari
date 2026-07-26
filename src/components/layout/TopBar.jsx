@@ -67,11 +67,11 @@ export default function TopBar({ isScrolled }) {
               <button
                 id="topbar-contact"
                 onClick={() => openContactModal()}
-                className="flex items-center gap-2 px-5 py-2.5 bg-[#3665f3] hover:bg-[#2b51c2] text-white text-xs font-bold uppercase tracking-wider transition-colors rounded-md cursor-pointer whitespace-nowrap shadow-sm"
+                className="group flex items-center gap-2 px-6 py-3 bg-[#3665f3] text-white text-xs font-bold uppercase tracking-wider transition-colors rounded-none cursor-pointer whitespace-nowrap"
                 aria-label={t('topbar.contact')}
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
+                  <path d="M5 12h14"/><path d="M12 5l7 7-7 7"/>
                 </svg>
                 <span>{t('topbar.contact')}</span>
               </button>

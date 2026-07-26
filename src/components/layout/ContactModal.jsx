@@ -21,7 +21,7 @@ export default function ContactModal() {
 
       {/* Modal */}
       <div 
-        className="relative bg-white w-full max-w-md shadow-2xl rounded-none flex flex-col max-h-[90vh] overflow-y-auto"
+        className="relative bg-white w-full max-w-md shadow-2xl rounded-xl flex flex-col max-h-[90vh] overflow-y-auto"
         role="dialog"
         aria-modal="true"
         aria-labelledby="contact-modal-title"
