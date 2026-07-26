@@ -16,12 +16,32 @@ async function translateText(text, sourceLang, targetLang) {
   }
 }
 
+function findLocalizedFields(obj, path = '') {
+  let fields = [];
+  if (obj === null || typeof obj !== 'object') return fields;
+
+  // Check if this object represents a localized field (has en or ka key)
+  if (('en' in obj && typeof obj.en === 'string') || ('ka' in obj && typeof obj.ka === 'string')) {
+    fields.push({ path, value: obj });
+    return fields;
+  }
+
+  for (const [key, value] of Object.entries(obj)) {
+    if (key.startsWith('_') && key !== '_key') continue; // Skip internal fields
+    const currentPath = path ? `${path}.${key}` : key;
+    if (typeof value === 'object' && value !== null) {
+      fields = fields.concat(findLocalizedFields(value, currentPath));
+    }
+  }
+  return fields;
+}
+
 export function TranslateAction(props) {
   const { patch } = useDocumentOperation(props.id, props.type);
   const [isTranslating, setIsTranslating] = useState(false);
 
   const doc = props.draft || props.published;
-  if (!doc || !['product', 'category'].includes(props.type)) {
+  if (!doc || !['product', 'category', 'siteStrings'].includes(props.type)) {
     return null;
   }
 
@@ -36,10 +56,10 @@ export function TranslateAction(props) {
 
       try {
         const patchData = {};
+        const localizedFields = findLocalizedFields(doc);
 
-        // Helper to translate a field
-        const processField = async (fieldName) => {
-          const fieldObj = doc[fieldName] || {};
+        for (const field of localizedFields) {
+          const fieldObj = field.value;
           // Determine source language
           let sourceLang = null;
           let sourceText = '';
@@ -52,25 +72,18 @@ export function TranslateAction(props) {
             sourceText = fieldObj.ka;
           }
 
-          if (!sourceLang || !sourceText) return;
+          if (!sourceLang || !sourceText) continue;
 
           // Translate to other missing languages
           for (const lang of LANGUAGES) {
             if (lang !== sourceLang && !fieldObj[lang]) {
               const translated = await translateText(sourceText, sourceLang, lang);
               if (translated) {
-                patchData[`${fieldName}.${lang}`] = translated;
+                patchData[`${field.path}.${lang}`] = translated;
               }
             }
           }
-        };
-
-        // Translate title
-        await processField('title');
-        // Translate description
-        await processField('description');
-        // Translate location
-        await processField('location');
+        }
 
         if (Object.keys(patchData).length > 0) {
           patch.execute([{ set: patchData }]);

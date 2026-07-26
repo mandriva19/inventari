@@ -42,6 +42,14 @@ export default defineConfig({
                   .schemaType('siteSettings')
                   .documentId('siteSettings')
               ),
+            S.listItem()
+              .title('Site Strings')
+              .icon(() => '💬')
+              .child(
+                S.document()
+                  .schemaType('siteStrings')
+                  .documentId('siteStrings')
+              ),
           ]),
     }),
     visionTool(), // GROQ query explorer
@@ -50,7 +58,7 @@ export default defineConfig({
   schema: { types: schemaTypes },
   document: {
     actions: (prev, context) => {
-      if (['product', 'category'].includes(context.schemaType)) {
+      if (['product', 'category', 'siteStrings'].includes(context.schemaType)) {
         return [...prev, TranslateAction];
       }
       return prev;

@@ -12,6 +12,12 @@ export const siteSettings = {
       description: 'The main logo displayed in the top bar and footer.',
     },
     {
+      name: 'favicon',
+      title: 'Site Favicon',
+      type: 'image',
+      description: 'Upload a favicon (.png or .ico) to show in the browser tab.',
+    },
+    {
       name: 'phone1',
       title: 'Phone Number 1 (Main)',
       type: 'string',
