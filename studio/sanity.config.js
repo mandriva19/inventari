@@ -2,6 +2,7 @@ import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
 import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './schemaTypes/index.js';
+import { TranslateAction } from './actions/TranslateAction.js';
 
 export default defineConfig({
   name: 'inventari-studio',
@@ -47,4 +48,12 @@ export default defineConfig({
   ],
 
   schema: { types: schemaTypes },
+  document: {
+    actions: (prev, context) => {
+      if (['product', 'category'].includes(context.schemaType)) {
+        return [...prev, TranslateAction];
+      }
+      return prev;
+    },
+  },
 });
