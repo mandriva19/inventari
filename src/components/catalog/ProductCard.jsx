@@ -18,7 +18,7 @@ export default function ProductCard({ product }) {
   const category = product.category || CATEGORIES.find((c) => c.id === product.categoryId);
 
   const chatMsg = encodeURIComponent(
-    `Hi, I'm interested in: ${localize(product.title)} (ID: ${product.customId || product._id})\n\nhttps://catalog.safeweb.ge/product/${product.slug}`
+    `Hi, I'm interested in: ${localize(product.title)} (ID: ${product.customId || product._id})`
   );
   const whatsappLink = contact.whatsapp
     ? `${contact.whatsapp}?text=${chatMsg}`

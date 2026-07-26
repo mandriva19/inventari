@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
 import './i18n/index.js';
 
 import ScrollToTop from './components/layout/ScrollToTop';
@@ -63,8 +62,7 @@ function AppShell() {
 
 export default function App() {
   return (
-    <HelmetProvider>
-      <SettingsProvider>
+    <SettingsProvider>
       <ContactModalProvider>
         <BrowserRouter>
           <ScrollToTop />
@@ -73,6 +71,5 @@ export default function App() {
         </BrowserRouter>
       </ContactModalProvider>
     </SettingsProvider>
-    </HelmetProvider>
   );
 }

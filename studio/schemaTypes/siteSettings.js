@@ -13,13 +13,13 @@ export const siteSettings = {
     },
     {
       name: 'phone1',
-      title: 'Phone Number 1',
+      title: 'Phone Number 1 (Main)',
       type: 'string',
       description: 'E.g., +995 555 123 456',
     },
     {
       name: 'phone2',
-      title: 'Phone Number 2 ',
+      title: 'Phone Number 2 (WhatsApp)',
       type: 'string',
       description: 'E.g., +995 555 123 456',
     }

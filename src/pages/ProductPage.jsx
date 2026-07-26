@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { useLocalizedField } from '../hooks/useLocalizedField';
 import { useProduct } from '../hooks/useProduct';
 import { CATEGORIES } from '../lib/mockData';
-import { Helmet } from 'react-helmet-async';
 
 import ImageSwiper    from '../components/product/ImageSwiper';
 import { MetaBadge, MetaGrid } from '../components/product/MetaBadge';
@@ -78,31 +77,8 @@ export default function ProductPage({ slug }) {
     },
   ];
 
-  const pageTitle = `${localize(product.title)} | Inventari`;
-  const pageDescription = localize(product.description) || t('footer.tagline');
-  const imageUrl = product.images?.[0] || '/assets/logo.png';
-  const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
-
   return (
-    <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8" id="main-content">
-      <Helmet>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
-        
-        {/* Open Graph / Facebook / WhatsApp */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={currentUrl} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content={imageUrl} />
-
-        {/* Twitter */}
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={currentUrl} />
-        <meta property="twitter:title" content={pageTitle} />
-        <meta property="twitter:description" content={pageDescription} />
-        <meta property="twitter:image" content={imageUrl} />
-      </Helmet>
+    <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10" id="main-content">
 
       {/* ── Breadcrumb / back ── */}
       <nav className="mb-6 lg:mb-8" aria-label="Breadcrumb">
