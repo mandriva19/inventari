@@ -69,7 +69,7 @@ export default function ProductPage({ slug }) {
     },
     {
       label: t('product.location'),
-      value: localize(product.location),
+      value: localize(product.location) || 'Tbilisi, Georgia',
     },
     {
       label: t('product.category'),
@@ -89,7 +89,7 @@ export default function ProductPage({ slug }) {
       </nav>
 
       {/* ── Two-column layout ── */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(320px,400px)] gap-8 lg:gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-[4.5fr_5.5fr] gap-8 lg:gap-12">
 
         {/* ── LEFT: gallery ── */}
         <div className="min-w-0">
