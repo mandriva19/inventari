@@ -12,7 +12,7 @@ export default function FilterBar({ activeCategory, activeStatus, onCategoryChan
   return (
     <div
       className={`sticky z-40 bg-white/90 backdrop-blur-md border-b border-gray-200 transition-all duration-300 ${
-        isScrolled ? 'top-20 py-2' : 'top-32 py-3'
+        isScrolled ? 'top-8 py-2' : 'top-32 py-3'
       }`}
       role="navigation"
       aria-label="Product filters"

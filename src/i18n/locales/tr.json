@@ -6,7 +6,7 @@
     "chat": "Sohbet"
   },
   "topbar": {
-    "contact": "Bize Ulaşın"
+    "contact": "Contact"
   },
   "filters": {
     "all": "Tümü",
@@ -19,7 +19,7 @@
     "location": "Konum",
     "category": "Kategori",
     "description": "Açıklama",
-    "call": "Şimdi Ara",
+    "call": "Contact",
     "chat": "Sohbet Et",
     "back": "Kataloğa Dön",
     "similar": "Benzer Ürünler",

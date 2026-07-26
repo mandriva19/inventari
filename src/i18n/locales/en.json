@@ -6,7 +6,7 @@
     "chat": "Chat"
   },
   "topbar": {
-    "contact": "Contact Us"
+    "contact": "Contact"
   },
   "filters": {
     "all": "All",
@@ -19,7 +19,7 @@
     "location": "Location",
     "category": "Category",
     "description": "Description",
-    "call": "Call Now",
+    "call": "Contact",
     "chat": "Chat",
     "back": "Back to Catalog",
     "similar": "Similar Items",

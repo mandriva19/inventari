@@ -6,7 +6,7 @@
     "chat": "دردشة"
   },
   "topbar": {
-    "contact": "تواصل معنا"
+    "contact": "Contact"
   },
   "filters": {
     "all": "الكل",
@@ -19,7 +19,7 @@
     "location": "الموقع",
     "category": "الفئة",
     "description": "الوصف",
-    "call": "اتصل الآن",
+    "call": "Contact",
     "chat": "تواصل عبر الدردشة",
     "back": "العودة إلى الكتالوج",
     "similar": "منتجات مشابهة",

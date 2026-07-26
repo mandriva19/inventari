@@ -6,7 +6,7 @@
     "chat": "Чат"
   },
   "topbar": {
-    "contact": "Связаться с нами"
+    "contact": "Contact"
   },
   "filters": {
     "all": "Все",
@@ -19,7 +19,7 @@
     "location": "Местоположение",
     "category": "Категория",
     "description": "Описание",
-    "call": "Позвонить",
+    "call": "Contact",
     "chat": "Написать",
     "back": "Назад в каталог",
     "similar": "Похожие товары",
