@@ -5,6 +5,13 @@ export const siteSettings = {
   icon: () => '⚙️',
   fields: [
     {
+      name: 'siteName',
+      title: 'Site Title',
+      type: 'string',
+      description: 'The title of the website displayed in the browser tab (e.g. "Inventari").',
+      initialValue: 'Inventari',
+    },
+    {
       name: 'logo',
       title: 'Site Logo',
       type: 'image',

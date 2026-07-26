@@ -6,6 +6,7 @@ const SettingsContext = createContext({});
 
 export function SettingsProvider({ children }) {
   const [settings, setSettings] = useState({
+    siteName: 'Inventari',
     logoUrl: null,
     faviconUrl: null,
     phone1: null,
@@ -24,13 +25,18 @@ export function SettingsProvider({ children }) {
         if (settingsData) {
           const logoUrl = settingsData.logo ? urlFor(settingsData.logo).url() : null;
           const faviconUrl = settingsData.favicon ? urlFor(settingsData.favicon).url() : null;
+          const siteName = settingsData.siteName || 'Inventari';
 
           setSettings({
+            siteName,
             logoUrl,
             faviconUrl,
             phone1: settingsData.phone1 || null,
             phone2: settingsData.phone2 || null,
           });
+
+          // Inject site title dynamically
+          document.title = siteName;
 
           // Inject favicon dynamically
           if (faviconUrl) {

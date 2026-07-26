@@ -282,13 +282,6 @@ export const siteStrings = {
     },
     // ── SEO & Metadata ──────────────────────────────────────
     {
-      name: 'meta__site_name',
-      title: 'Site Name',
-      type: 'localizedString',
-      group: 'meta',
-      hidden: ({ document }) => !document?.useDynamicStrings,
-    },
-    {
       name: 'meta__home_title',
       title: 'Home Page Meta Title',
       type: 'localizedString',
