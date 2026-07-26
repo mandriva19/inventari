@@ -47,7 +47,7 @@ export default function TopBar({ isScrolled }) {
       </div>
 
       {/* Main Bar: Logo & CTA */}
-      <div className={`bg-white border-gray-200 transition-all duration-300 flex items-center overflow-hidden ${isScrolled ? 'h-0 border-b-0 opacity-0' : 'h-24 border-b opacity-100'}`}>
+      <div className={`bg-white border-b border-gray-200 transition-all duration-300 flex items-center overflow-hidden ${isScrolled ? 'h-12' : 'h-24'}`}>
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             
@@ -57,17 +57,17 @@ export default function TopBar({ isScrolled }) {
                 <img 
                   src="/assets/logo.png" 
                   alt="Inventari Logo" 
-                  className="object-contain bg-white h-20 max-w-[300px]"
+                  className={`object-contain bg-white transition-all duration-300 ${isScrolled ? 'h-8 max-w-[150px]' : 'h-20 max-w-[300px]'}`}
                 />
               </Link>
             </div>
 
-            {/* Contact CTA (Right) */}
-            <div className="flex items-center justify-end">
+            {/* Contact CTA (Right) - Disappears on scroll */}
+            <div className={`flex items-center justify-end transition-all duration-300 overflow-hidden ${isScrolled ? 'opacity-0 w-0 scale-95 pointer-events-none' : 'opacity-100 w-auto scale-100'}`}>
               <button
                 id="topbar-contact"
                 onClick={() => openContactModal()}
-                className="flex items-center gap-1.5 px-4 py-2.5 bg-[#3665f3] hover:bg-[#2b51c2] text-white text-xs font-bold uppercase tracking-wider transition-colors rounded-none cursor-pointer"
+                className="flex items-center gap-1.5 px-4 py-2.5 bg-[#3665f3] hover:bg-[#2b51c2] text-white text-xs font-bold uppercase tracking-wider transition-colors rounded-none cursor-pointer whitespace-nowrap"
                 aria-label={t('topbar.contact')}
               >
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
