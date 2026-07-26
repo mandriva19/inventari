@@ -44,19 +44,6 @@ export default function HomePage({ isScrolled }) {
           onClearFilters={handleClearFilters}
         />
       </main>
-
-      {/* Scroll to Top Button */}
-      {isScrolled && (
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-[#3665f3] text-white rounded-full shadow-lg hover:bg-[#2b51c2] transition-all duration-300 transform hover:scale-105 active:scale-95 cursor-pointer"
-          aria-label="Scroll to top"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M18 15l-6-6-6 6"/>
-          </svg>
-        </button>
-      )}
     </>
   );
 }
