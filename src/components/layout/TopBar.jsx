@@ -24,8 +24,8 @@ export default function TopBar({ isScrolled }) {
   return (
     <div className="fixed top-0 left-0 right-0 z-50 flex flex-col">
       {/* Top Mini-Bar: Languages */}
-      <div className="bg-gray-50 border-b border-gray-200 h-8 flex items-center justify-start px-4 sm:px-6 lg:px-8 transition-all duration-300">
-        <div className="flex items-center gap-1 w-full max-w-7xl mx-auto justify-start" role="navigation" aria-label="Language switcher">
+      <div className="bg-gray-50 border-b border-gray-200 h-8 flex items-center justify-start transition-all duration-300">
+        <div className="flex items-center gap-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 justify-start" role="navigation" aria-label="Language switcher">
           {LANGUAGES.map((l) => (
             <button
               key={l.code}
