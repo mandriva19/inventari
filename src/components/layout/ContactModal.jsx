@@ -72,7 +72,7 @@ export default function ContactModal() {
                   : group.whatsapp;
               
               const chatMsg = productContext 
-                ? encodeURIComponent(`Hi, I'm interested in: ${localize(productContext.title)} (ID: ${productContext.customId || productContext._id})`)
+                ? encodeURIComponent(`Hi, I'm interested in: ${localize(productContext.title)} (ID: ${productContext.customId || productContext._id})\n\nhttps://catalog.safeweb.ge/product/${productContext.slug}`)
                 : encodeURIComponent(`Hi, I have a question.`);
               
               const whatsappLink = overrideWhatsappUrl ? `${overrideWhatsappUrl}?text=${chatMsg}` : null;
