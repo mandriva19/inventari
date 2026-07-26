@@ -44,6 +44,7 @@ const CATEGORY_PROJECTION = `
 /** Product card projection (lightweight — for grid) */
 const PRODUCT_CARD_PROJECTION = `
   _id,
+  customId,
   "slug": slug.current,
   title ${LOCALIZED_STRING},
   status,

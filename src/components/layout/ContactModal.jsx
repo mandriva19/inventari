@@ -50,7 +50,7 @@ export default function ContactModal() {
                 Product Reference
               </span>
               <span className="font-mono text-sm font-bold text-gray-900">
-                ID: {productContext._id}
+                ID: {productContext.customId || productContext._id}
               </span>
               <span className="text-sm text-gray-600 line-clamp-1">
                 {localize(productContext.title)}
@@ -62,7 +62,7 @@ export default function ContactModal() {
             {Object.entries(CONTACT_GROUPS).map(([key, group], idx) => {
               
               const chatMsg = productContext 
-                ? encodeURIComponent(`Hi, I'm interested in: ${localize(productContext.title)} (ID: ${productContext._id})`)
+                ? encodeURIComponent(`Hi, I'm interested in: ${localize(productContext.title)} (ID: ${productContext.customId || productContext._id})`)
                 : encodeURIComponent(`Hi, I have a question.`);
               
               const whatsappLink = group.whatsapp ? `${group.whatsapp}?text=${chatMsg}` : null;

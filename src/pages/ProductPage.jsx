@@ -54,7 +54,7 @@ export default function ProductPage({ slug }) {
   const metaItems = [
     {
       label: 'ID',
-      value: <span className="font-mono text-gray-900">{product._id?.substring(0, 8) || product._id}</span>,
+      value: <span className="font-mono text-gray-900">{product.customId || product._id?.substring(0, 8) || product._id}</span>,
     },
     {
       label: t('product.condition'),

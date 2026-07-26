@@ -33,6 +33,13 @@ export const product = {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: 'customId',
+      title: 'Product ID (Manual)',
+      type: 'string',
+      group: 'content',
+      description: 'A manually entered ID for this product (e.g., 001, A-123).',
+    },
+    {
       name: 'description',
       title: 'Description',
       type: 'localizedText',
