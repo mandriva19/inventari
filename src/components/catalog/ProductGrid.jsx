@@ -12,9 +12,8 @@ function SkeletonCard() {
         <div className="h-5 w-11/12 bg-gray-200 rounded" />
         <div className="h-4 w-1/2 bg-gray-200 rounded" />
       </div>
-      <div className="flex gap-0.5 p-0.5 bg-gray-200 mt-auto">
-        <div className="flex-1 h-12 bg-gray-300" />
-        <div className="flex-1 h-12 bg-gray-300" />
+      <div className="w-full mt-auto">
+        <div className="w-full h-11 sm:h-13 bg-gray-300" />
       </div>
     </div>
   );
