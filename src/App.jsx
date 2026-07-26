@@ -10,6 +10,7 @@ import ProductPage from './pages/ProductPage';
 import StudioPage  from './pages/StudioPage';
 import { ContactModalProvider } from './contexts/ContactModalContext';
 import ContactModal from './components/layout/ContactModal';
+import { SettingsProvider } from './contexts/SettingsContext';
 
 import './styles/global.css';
 
@@ -61,12 +62,14 @@ function AppShell() {
 
 export default function App() {
   return (
-    <ContactModalProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <AppShell />
-        <ContactModal />
-      </BrowserRouter>
-    </ContactModalProvider>
+    <SettingsProvider>
+      <ContactModalProvider>
+        <BrowserRouter>
+          <ScrollToTop />
+          <AppShell />
+          <ContactModal />
+        </BrowserRouter>
+      </ContactModalProvider>
+    </SettingsProvider>
   );
 }

@@ -2,11 +2,13 @@ import { useTranslation } from 'react-i18next';
 import { useContactModal } from '../../contexts/ContactModalContext';
 import { CONTACT_GROUPS } from '../../config/contact';
 import { useLocalizedField } from '../../hooks/useLocalizedField';
+import { useSettings } from '../../contexts/SettingsContext';
 
 export default function ContactModal() {
   const { isOpen, closeContactModal, productContext } = useContactModal();
   const { t } = useTranslation();
   const localize = useLocalizedField();
+  const settings = useSettings();
 
   if (!isOpen) return null;
 
@@ -61,11 +63,19 @@ export default function ContactModal() {
           <div className="flex flex-col gap-6">
             {Object.entries(CONTACT_GROUPS).map(([key, group], idx) => {
               
+              // Override static numbers with Sanity settings if available
+              const overridePhone = idx === 0 ? (settings?.phone1 || group.phone) : (settings?.phone2 || group.phone);
+              const overrideWhatsappUrl = idx === 0 && settings?.phone1 
+                ? `https://wa.me/${settings.phone1.replace(/\D/g, '')}`
+                : idx === 1 && settings?.phone2 
+                  ? `https://wa.me/${settings.phone2.replace(/\D/g, '')}`
+                  : group.whatsapp;
+              
               const chatMsg = productContext 
                 ? encodeURIComponent(`Hi, I'm interested in: ${localize(productContext.title)} (ID: ${productContext.customId || productContext._id})`)
                 : encodeURIComponent(`Hi, I have a question.`);
               
-              const whatsappLink = group.whatsapp ? `${group.whatsapp}?text=${chatMsg}` : null;
+              const whatsappLink = overrideWhatsappUrl ? `${overrideWhatsappUrl}?text=${chatMsg}` : null;
 
               return (
                 <div key={key} className="flex flex-col gap-3">
@@ -80,7 +90,7 @@ export default function ContactModal() {
                   
                   <div className="grid grid-cols-2 gap-2">
                     <a
-                      href={`tel:${group.phone}`}
+                      href={`tel:${overridePhone}`}
                       className="flex items-center justify-center gap-2 bg-[#3665f3] hover:bg-[#2b51c2] text-white px-4 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors"
                     >
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">

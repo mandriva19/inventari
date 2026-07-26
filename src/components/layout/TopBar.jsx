@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { getContactForLang } from '../../config/contact';
 import { useContactModal } from '../../contexts/ContactModalContext';
+import { useSettings } from '../../contexts/SettingsContext';
 
 const LANGUAGES = [
   { code: 'en', label: 'EN', name: 'English' },
@@ -16,6 +17,7 @@ export default function TopBar({ isScrolled }) {
   const lang = i18n.language;
   const contact = getContactForLang(lang);
   const { openContactModal } = useContactModal();
+  const settings = useSettings();
 
   const handleLangChange = (code) => {
     i18n.changeLanguage(code);
@@ -55,7 +57,7 @@ export default function TopBar({ isScrolled }) {
             <div className="flex items-center shrink-0">
               <Link to="/" aria-label={t('navigation.home') || 'Home'}>
                 <img 
-                  src="/assets/logo.png" 
+                  src={settings?.logoUrl || "/assets/logo.png"} 
                   alt="Inventari Logo" 
                   className="object-contain bg-white h-20 max-w-[300px]"
                 />

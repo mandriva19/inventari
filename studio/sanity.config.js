@@ -33,9 +33,14 @@ export default defineConfig({
                   .defaultOrdering([{ field: 'order', direction: 'asc' }])
               ),
             S.divider(),
-            ...S.documentTypeListItems().filter(
-              (item) => !['product', 'category'].includes(item.getId())
-            ),
+            S.listItem()
+              .title('Site Settings')
+              .icon(() => '⚙️')
+              .child(
+                S.document()
+                  .schemaType('siteSettings')
+                  .documentId('siteSettings')
+              ),
           ]),
     }),
     visionTool(), // GROQ query explorer
