@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { getContactForLang } from '../../config/contact';
 import { useContactModal } from '../../contexts/ContactModalContext';
 import { useSettings } from '../../contexts/SettingsContext';
+import { useLocalizedField } from '../../hooks/useLocalizedField';
 
 const LANGUAGES = [
   { code: 'en', label: 'EN', name: 'English' },
@@ -18,6 +19,7 @@ export default function TopBar({ isScrolled }) {
   const contact = getContactForLang(lang);
   const { openContactModal } = useContactModal();
   const settings = useSettings();
+  const localize = useLocalizedField();
 
   const handleLangChange = (code) => {
     i18n.changeLanguage(code);
@@ -45,6 +47,16 @@ export default function TopBar({ isScrolled }) {
               <span>{l.label}</span>
             </button>
           ))}
+        </div>
+      </div>
+
+      {/* Site Title Bar (Always visible!) */}
+      <div 
+        className="bg-gray-100 border-b border-gray-200 h-8 flex items-center justify-center transition-all duration-300"
+        style={{ color: settings?.headerTitleColor || '#1f2937' }}
+      >
+        <div className={`w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center font-bold uppercase ${settings?.headerTitleFontSize || 'text-base'}`}>
+          {localize(settings?.headerTitle) || 'Premium Equipment'}
         </div>
       </div>
 

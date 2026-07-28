@@ -11,6 +11,9 @@ export function SettingsProvider({ children }) {
     faviconUrl: null,
     phone1: null,
     phone2: null,
+    headerTitle: null,
+    headerTitleFontSize: 'text-base',
+    headerTitleColor: '#1f2937',
   });
 
   useEffect(() => {
@@ -33,6 +36,9 @@ export function SettingsProvider({ children }) {
             faviconUrl,
             phone1: settingsData.phone1 || null,
             phone2: settingsData.phone2 || null,
+            headerTitle: settingsData.headerTitle || null,
+            headerTitleFontSize: settingsData.headerTitleFontSize || 'text-base',
+            headerTitleColor: settingsData.headerTitleColor || '#1f2937',
           });
 
           // Inject site title dynamically
