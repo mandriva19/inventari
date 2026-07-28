@@ -52,10 +52,10 @@ export default function TopBar({ isScrolled }) {
 
       {/* Site Title Bar (Always visible!) */}
       <div 
-        className="bg-gray-100 border-b border-gray-200 h-8 flex items-center justify-center transition-all duration-300"
+        className="bg-white border-b border-gray-100 h-8 flex items-center transition-all duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
         style={{ color: settings?.headerTitleColor || '#1f2937' }}
       >
-        <div className={`w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center font-bold uppercase ${settings?.headerTitleFontSize || 'text-base'}`}>
+        <div className={`w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left font-bold uppercase tracking-wider ${settings?.headerTitleFontSize || 'text-base'}`}>
           {localize(settings?.headerTitle) || 'Premium Equipment'}
         </div>
       </div>
