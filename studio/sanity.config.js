@@ -58,7 +58,7 @@ export default defineConfig({
   schema: { types: schemaTypes },
   document: {
     actions: (prev, context) => {
-      if (['product', 'category', 'siteStrings'].includes(context.schemaType)) {
+      if (['product', 'category', 'siteStrings', 'siteSettings'].includes(context.schemaType)) {
         return [...prev, TranslateAction];
       }
       return prev;

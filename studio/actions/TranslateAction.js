@@ -41,7 +41,7 @@ export function TranslateAction(props) {
   const [isTranslating, setIsTranslating] = useState(false);
 
   const doc = props.draft || props.published;
-  if (!doc || !['product', 'category', 'siteStrings'].includes(props.type)) {
+  if (!doc || !['product', 'category', 'siteStrings', 'siteSettings'].includes(props.type)) {
     return null;
   }
 
