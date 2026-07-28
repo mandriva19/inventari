@@ -19,7 +19,7 @@ export default function Footer() {
         <p className="text-gray-500 max-w-md">{t('footer.tagline')}</p>
         
         <div className="text-sm text-gray-400 mt-4">
-          © 2026 | <a href="mailto:app@safeweb.ge?subject=Safeweb%20Catalog" className="hover:underline hover:text-gray-600">app@safeweb.ge</a>
+          © 2026 | <a href="mailto:catalog@safeweb.ge?subject=Hello" className="hover:underline hover:text-gray-600">app@safeweb.ge</a>
         </div>
       </div>
     </footer>
