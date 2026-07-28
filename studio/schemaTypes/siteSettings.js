@@ -6,6 +6,7 @@ export const siteSettings = {
   groups: [
     { name: 'general', title: 'General', default: true },
     { name: 'header',  title: 'Site Header' },
+    { name: 'contact', title: 'Contact Channels (CTA)' },
   ],
   fields: [
     {
@@ -32,18 +33,12 @@ export const siteSettings = {
       description: 'Upload a favicon (.png or .ico) to show in the browser tab.',
     },
     {
-      name: 'phone1',
-      title: 'Phone Number 1 (Main)',
-      type: 'string',
-      group: 'general',
-      description: 'E.g., +995 555 123 456',
-    },
-    {
-      name: 'phone2',
-      title: 'Phone Number 2 (WhatsApp)',
-      type: 'string',
-      group: 'general',
-      description: 'E.g., +995 555 123 456',
+      name: 'contactOptions',
+      title: 'Contact Options (CTA Groups)',
+      type: 'array',
+      group: 'contact',
+      of: [{ type: 'contactOption' }],
+      description: 'Define groups of contact buttons shown in the Contact Us modal.',
     },
     // ── Site Header ─────────────────────────────────────────
     {

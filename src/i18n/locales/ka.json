@@ -29,7 +29,8 @@
     "status_available": "ხელმისაწვდომი",
     "status_limited": "შეზღუდული",
     "status_sold": "გაყიდული",
-    "contact_cta": "კონტაქტი"
+    "contact_cta": "კონტაქტი",
+    "reference": "პროდუქტის კოდი"
   },
   "home": {
     "title": "პრემიუმ რესტორნის აღჭურვილობა",

@@ -29,7 +29,8 @@
     "status_available": "متاح",
     "status_limited": "محدود",
     "status_sold": "تم البيع",
-    "contact_cta": "Contact"
+    "contact_cta": "Contact",
+    "reference": "رمز المنتج"
   },
   "home": {
     "title": "معدات مطاعم فاخرة",

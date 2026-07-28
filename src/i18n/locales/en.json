@@ -29,7 +29,8 @@
     "status_available": "Available",
     "status_limited": "Limited",
     "status_sold": "Sold",
-    "contact_cta": "Contact"
+    "contact_cta": "Contact",
+    "reference": "Product Reference"
   },
   "home": {
     "title": "Premium Restaurant Equipment",
@@ -48,7 +49,7 @@
     "location": "Tbilisi, Georgia"
   },
   "meta": {
-    "site_name": "Inventari",
+    "site_name": "",
     "home_title": "Premium Restaurant Equipment — Tbilisi",
     "home_desc": "Browse quality commercial furniture and equipment at great prices in Tbilisi, Georgia."
   }
