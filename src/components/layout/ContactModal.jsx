@@ -99,7 +99,8 @@ const CHANNEL_META = {
 };
 
 const getChannelLink = (type, value, productContext, localize) => {
-  const cleanVal = value ? value.replace(/[\s\(\)\-\+]/g, '') : '';
+  const safeVal = value || '';
+  const cleanVal = safeVal.replace(/[\s\(\)\-\+]/g, '');
   const chatMsg = productContext 
     ? encodeURIComponent(`Hi, I'm interested in: ${localize(productContext.title)} (ID: ${productContext.customId || productContext._id})`)
     : encodeURIComponent(`Hi, I have a question.`);
@@ -110,11 +111,11 @@ const getChannelLink = (type, value, productContext, localize) => {
     case 'whatsapp':
       return `https://wa.me/${cleanVal}?text=${chatMsg}`;
     case 'telegram':
-      return `https://t.me/${value.replace('@', '')}`;
+      return `https://t.me/${safeVal.replace('@', '')}`;
     case 'messenger':
-      return `https://m.me/${value.replace(/^\/+/, '')}`;
+      return `https://m.me/${safeVal.replace(/^\/+/, '')}`;
     case 'instagram':
-      return `https://instagram.com/${value.replace('@', '')}`;
+      return `https://instagram.com/${safeVal.replace('@', '')}`;
     case 'viber':
       return `viber://chat?number=${cleanVal}`;
     case 'signal':
@@ -122,11 +123,11 @@ const getChannelLink = (type, value, productContext, localize) => {
     case 'sms':
       return `sms:${cleanVal}?body=${chatMsg}`;
     case 'email':
-      return `mailto:${value}?subject=Product%20Inquiry&body=${chatMsg}`;
+      return `mailto:${safeVal}?subject=Product%20Inquiry&body=${chatMsg}`;
     case 'wechat':
       return '#'; // Handled via clipboard copy
     default:
-      return value;
+      return safeVal;
   }
 };
 
