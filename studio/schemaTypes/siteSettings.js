@@ -82,6 +82,8 @@ export const siteSettings = {
           { title: 'Red',                 value: '#ef4444' },
           { title: 'Green',               value: '#10b981' },
           { title: 'Amber',               value: '#f59e0b' },
+          { title: 'Soft Teal (#5b9b8b)', value: '#5b9b8b' },
+          { title: 'Soft Gold (#e4b654)', value: '#e4b654' },
           { title: 'White',               value: '#ffffff' },
         ],
       },
