@@ -26,11 +26,22 @@ function findLocalizedFields(obj, path = '') {
     return fields;
   }
 
-  for (const [key, value] of Object.entries(obj)) {
-    if (key.startsWith('_') && key !== '_key') continue; // Skip internal fields
-    const currentPath = path ? `${path}.${key}` : key;
-    if (typeof value === 'object' && value !== null) {
-      fields = fields.concat(findLocalizedFields(value, currentPath));
+  if (Array.isArray(obj)) {
+    obj.forEach((item, index) => {
+      if (item && typeof item === 'object') {
+        const itemKey = item._key;
+        const selector = itemKey ? `[_key == "${itemKey}"]` : `[${index}]`;
+        const currentPath = `${path}${selector}`;
+        fields = fields.concat(findLocalizedFields(item, currentPath));
+      }
+    });
+  } else {
+    for (const [key, value] of Object.entries(obj)) {
+      if (key.startsWith('_') && key !== '_key') continue; // Skip internal fields
+      const currentPath = path ? `${path}.${key}` : key;
+      if (typeof value === 'object' && value !== null) {
+        fields = fields.concat(findLocalizedFields(value, currentPath));
+      }
     }
   }
   return fields;
