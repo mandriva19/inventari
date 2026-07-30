@@ -56,7 +56,7 @@ export default function TopBar({ isScrolled }) {
         style={{ color: settings?.headerTitleColor || '#1f2937' }}
       >
         <div className={`w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left font-bold uppercase tracking-wider ${settings?.headerTitleFontSize || 'text-base'}`}>
-          {localize(settings?.headerTitle) || 'Premium Equipment'}
+          {settings.loading ? '' : (localize(settings?.headerTitle) || 'Premium Equipment')}
         </div>
       </div>
 

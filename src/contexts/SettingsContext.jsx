@@ -12,6 +12,7 @@ export function SettingsProvider({ children }) {
     headerTitleFontSize: 'text-base',
     headerTitleColor: '#1f2937',
     contactOptions: null,
+    loading: true,
   });
 
   useEffect(() => {
@@ -36,6 +37,7 @@ export function SettingsProvider({ children }) {
             headerTitleFontSize: settingsData.headerTitleFontSize || 'text-base',
             headerTitleColor: settingsData.headerTitleColor || '#1f2937',
             contactOptions: settingsData.contactOptions || null,
+            loading: false,
           });
 
           // Inject site title dynamically
@@ -51,6 +53,8 @@ export function SettingsProvider({ children }) {
             }
             link.href = faviconUrl;
           }
+        } else {
+          setSettings(prev => ({ ...prev, loading: false }));
         }
 
         // Handle dynamic translations
@@ -86,6 +90,7 @@ export function SettingsProvider({ children }) {
         }
       } catch (error) {
         console.error('Error fetching site settings/strings:', error);
+        setSettings(prev => ({ ...prev, loading: false }));
       }
     };
 
