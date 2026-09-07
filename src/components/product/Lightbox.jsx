@@ -32,21 +32,47 @@ export default function LightboxGallery({ images = [], alt = '' }) {
 
   return (
     <>
-      {/* Thumbnail gallery – same layout as previous ImageSwiper */}
-      <div className="grid grid-cols-1 gap-2">
-        {images.map((src, idx) => (
+      {/* Main image (first image) */}
+      <style>{`
+        .scroll-container {
+          scrollbar-width: none; /* Firefox */
+          -ms-overflow-style: none; /* IE 10+ */
+        }
+        .scroll-container::-webkit-scrollbar {
+          display: none; /* Chrome, Safari, Opera */
+        }
+      `}</style>
+      {images.length > 0 && (
+        <button
+          type="button"
+          className="w-full mb-4 flex items-center justify-center bg-gray-100 cursor-zoom-in"
+          onClick={() => handleOpen(0)}
+          aria-label={`${alt} – main image`}
+        >
+          <img
+            src={images[0]}
+            alt={`${alt} — main image`}
+            loading="eager"
+            className="w-full max-h-[500px] object-cover rounded-lg"
+          />
+        </button>
+      )}
+
+      {/* Horizontal thumbnails */}
+      <div className="flex overflow-x-auto gap-2 py-2 scroll-container">
+        {images.slice(1).map((src, idx) => (
           <button
-            key={idx}
+            key={idx + 1}
             type="button"
-            className="w-full h-full flex items-center justify-center bg-gray-100 cursor-zoom-in"
-            onClick={() => handleOpen(idx)}
-            aria-label={`${alt} – image ${idx + 1}`}
+            className="flex-none w-[100px] h-[100px] bg-gray-100 cursor-zoom-in rounded-lg"
+            onClick={() => handleOpen(idx + 1)}
+            aria-label={`${alt} – thumbnail ${idx + 2}`}
           >
             <img
               src={src}
-              alt={`${alt} — image ${idx + 1}`}
-              loading={idx === 0 ? 'eager' : 'lazy'}
-              className="w-full h-full object-cover"
+              alt={`${alt} — thumbnail ${idx + 2}`}
+              loading="lazy"
+              className="w-full h-full object-cover rounded-lg"
             />
           </button>
         ))}
