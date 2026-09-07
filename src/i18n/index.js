@@ -21,7 +21,7 @@ i18n
       tr: { translation: tr },
       ar: { translation: ar },
     },
-    fallbackLng: 'en',
+    fallbackLng: 'ka',
     supportedLngs: ['en', 'ka', 'ru', 'tr', 'ar'],
     interpolation: { escapeValue: false },
     detection: {

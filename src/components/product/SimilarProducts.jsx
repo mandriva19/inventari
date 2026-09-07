@@ -5,11 +5,11 @@ import { useSimilarProducts } from '../../hooks/useSimilarProducts';
 /**
  * SimilarProducts — shows up to `limit` products from the same category.
  *
- * @param {{ categoryId: string, slug: string, limit?: number }} props
+ * @param {{ categoryIds: string[], slug: string, limit?: number }} props
  */
-export default function SimilarProducts({ categoryId, slug, limit = 4 }) {
+export default function SimilarProducts({ categoryIds, slug, limit = 4 }) {
   const { t } = useTranslation();
-  const { similar, isLoading } = useSimilarProducts(categoryId, slug, limit);
+  const { similar, isLoading } = useSimilarProducts(categoryIds, slug, limit);
 
   if (isLoading || !similar.length) return null;
 

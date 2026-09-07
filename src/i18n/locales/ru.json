@@ -6,7 +6,7 @@
     "chat": "Чат"
   },
   "topbar": {
-    "contact": "Contact"
+    "contact": "Контакт"
   },
   "filters": {
     "all": "Все",
@@ -19,7 +19,7 @@
     "location": "Местоположение",
     "category": "Категория",
     "description": "Описание",
-    "call": "Call",
+    "call": "Позвонить",
     "chat": "Написать",
     "back": "Назад в каталог",
     "similar": "Похожие товары",
@@ -29,7 +29,16 @@
     "status_available": "В наличии",
     "status_limited": "Ограничено",
     "status_sold": "Продано",
-    "contact_cta": "Contact",
+    "contact_cta": "Контакт",
+    "copied": "Скопировано!",
+    "open_image": "Открыть изображение {{count}}",
+    "image_gallery": "Галерея изображений",
+    "zoom_in": "Увеличить",
+    "zoom_out": "Уменьшить",
+    "reset_zoom": "Сбросить масштаб",
+    "close_image": "Закрыть изображение",
+    "previous_image": "Предыдущее изображение",
+    "next_image": "Следующее изображение",
     "reference": "Артикул товара"
   },
   "home": {

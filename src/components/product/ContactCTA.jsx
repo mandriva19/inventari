@@ -11,7 +11,7 @@ export default function ContactCTA({ productId, productTitle, size = 'md' }) {
   const product = productId ? { _id: productId, title: productTitle } : null;
 
   // Uniform CTA classes for both sizes: uppercase, large padding, simple hover
-  const baseClass = "group w-full flex items-center justify-center gap-3 bg-[#3665f3] text-white font-bold uppercase tracking-wider transition-colors rounded-none cursor-pointer";
+  const baseClass = "group w-full flex items-center justify-center gap-3 bg-[#3665f3] text-white font-bold uppercase tracking-wider transition-colors rounded-[30px] cursor-pointer";
   const paddingClass = size === 'lg' ? "py-5 px-6 text-base" : "py-4 px-4 text-sm";
 
   return (

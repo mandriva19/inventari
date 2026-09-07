@@ -36,7 +36,7 @@ export default function TopBar({ isScrolled }) {
               id={`lang-btn-${l.code}`}
               className={`text-[10px] sm:text-xs font-bold px-2 py-1 rounded transition-colors ${
                 lang === l.code 
-                  ? 'bg-gray-200 text-gray-900' 
+                  ? 'bg-[#3665f3] text-white' 
                   : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'
               }`}
               onClick={() => handleLangChange(l.code)}
@@ -81,7 +81,7 @@ export default function TopBar({ isScrolled }) {
               <button
                 id="topbar-contact"
                 onClick={() => openContactModal()}
-                className="group flex items-center gap-2 px-6 py-3 bg-[#3665f3] text-white text-xs font-bold uppercase tracking-wider transition-colors rounded-none cursor-pointer whitespace-nowrap"
+                className="group flex items-center gap-2 px-6 py-3 bg-[#3665f3] text-white text-xs font-bold uppercase tracking-wider transition-colors rounded-[30px] cursor-pointer whitespace-nowrap"
                 aria-label={t('topbar.contact')}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">

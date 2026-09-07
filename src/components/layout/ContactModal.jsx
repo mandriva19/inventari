@@ -240,11 +240,11 @@ export default function ContactModal() {
                         <button
                           key={cIdx}
                           onClick={() => handleWeChatCopy(chan.value)}
-                          className={`flex flex-col sm:flex-row items-center justify-center gap-2 ${meta.color} text-white px-4 py-3 text-xs font-bold uppercase tracking-wider transition-colors min-h-[48px]`}
+                          className={`flex flex-col sm:flex-row items-center justify-center gap-2 ${meta.color} text-white px-4 py-3 text-xs font-bold uppercase tracking-wider transition-colors min-h-[48px] rounded-[30px]`}
                         >
                           <div className="flex items-center gap-1.5">
                             {meta.icon}
-                            <span>{copiedText === chan.value ? 'Copied!' : meta.label}</span>
+                            <span>{copiedText === chan.value ? t('product.copied') : t('product.call')}</span>
                           </div>
                           {copiedText !== chan.value && (
                             <span className="text-[9px] lowercase opacity-80 block truncate max-w-full">
@@ -261,10 +261,10 @@ export default function ContactModal() {
                         href={link}
                         target={chan.type !== 'phone' && chan.type !== 'viber' && chan.type !== 'sms' ? "_blank" : undefined}
                         rel="noopener noreferrer"
-                        className={`flex items-center justify-center gap-2 ${meta.color} text-white px-4 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors min-h-[48px]`}
+                        className={`flex items-center justify-center gap-2 ${meta.color} text-white px-4 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors min-h-[48px] rounded-[30px]`}
                       >
                         {meta.icon}
-                        <span>{t(`product.${chan.type}`, { defaultValue: meta.label })}</span>
+                        <span>{t(chan.type === 'phone' ? 'product.call' : `product.${chan.type}`, { defaultValue: meta.label })}</span>
                       </a>
                     );
                   })}

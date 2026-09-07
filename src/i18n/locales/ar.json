@@ -6,7 +6,7 @@
     "chat": "دردشة"
   },
   "topbar": {
-    "contact": "Contact"
+    "contact": "اتصل بنا"
   },
   "filters": {
     "all": "الكل",
@@ -19,7 +19,7 @@
     "location": "الموقع",
     "category": "الفئة",
     "description": "الوصف",
-    "call": "Call",
+    "call": "اتصل",
     "chat": "تواصل عبر الدردشة",
     "back": "العودة إلى الكتالوج",
     "similar": "منتجات مشابهة",
@@ -29,7 +29,16 @@
     "status_available": "متاح",
     "status_limited": "محدود",
     "status_sold": "تم البيع",
-    "contact_cta": "Contact",
+    "contact_cta": "اتصل بنا",
+    "copied": "تم النسخ!",
+    "open_image": "فتح الصورة {{count}}",
+    "image_gallery": "معرض الصور",
+    "zoom_in": "تكبير",
+    "zoom_out": "تصغير",
+    "reset_zoom": "إعادة ضبط التكبير",
+    "close_image": "إغلاق الصورة",
+    "previous_image": "الصورة السابقة",
+    "next_image": "الصورة التالية",
     "reference": "رمز المنتج"
   },
   "home": {

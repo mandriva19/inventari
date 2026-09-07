@@ -6,7 +6,7 @@
     "chat": "Sohbet"
   },
   "topbar": {
-    "contact": "Contact"
+    "contact": "İletişim"
   },
   "filters": {
     "all": "Tümü",
@@ -19,7 +19,7 @@
     "location": "Konum",
     "category": "Kategori",
     "description": "Açıklama",
-    "call": "Call",
+    "call": "Ara",
     "chat": "Sohbet Et",
     "back": "Kataloğa Dön",
     "similar": "Benzer Ürünler",
@@ -29,7 +29,16 @@
     "status_available": "Mevcut",
     "status_limited": "Sınırlı",
     "status_sold": "Satıldı",
-    "contact_cta": "Contact",
+    "contact_cta": "İletişim",
+    "copied": "Kopyalandı!",
+    "open_image": "{{count}}. resmi aç",
+    "image_gallery": "Resim galerisi",
+    "zoom_in": "Yakınlaştır",
+    "zoom_out": "Uzaklaştır",
+    "reset_zoom": "Yakınlaştırmayı sıfırla",
+    "close_image": "Resmi kapat",
+    "previous_image": "Önceki resim",
+    "next_image": "Sonraki resim",
     "reference": "Ürün Kodu"
   },
   "home": {

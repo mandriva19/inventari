@@ -30,6 +30,15 @@
     "status_limited": "Limited",
     "status_sold": "Sold",
     "contact_cta": "Contact",
+    "copied": "Copied!",
+    "open_image": "Open image {{count}}",
+    "image_gallery": "Image gallery",
+    "zoom_in": "Zoom in",
+    "zoom_out": "Zoom out",
+    "reset_zoom": "Reset zoom",
+    "close_image": "Close image",
+    "previous_image": "Previous image",
+    "next_image": "Next image",
     "reference": "Product Reference"
   },
   "home": {

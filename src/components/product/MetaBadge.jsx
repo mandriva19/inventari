@@ -50,7 +50,7 @@ export function MetaGrid({ items = [] }) {
   if (!filtered.length) return null;
 
   return (
-    <div className="grid grid-cols-2 gap-4 py-6 border-y border-gray-100 my-2">
+    <div className="grid grid-cols-2 gap-4 py-6 border-y border-[#3665f303] my-2 p-5 bg-[#3665f308] rounded-lg ">
       {filtered.map(({ label, value, badge }) => (
         <div className="flex flex-col gap-1" key={label}>
           <span className="text-xs uppercase font-bold text-gray-500">{label}</span>

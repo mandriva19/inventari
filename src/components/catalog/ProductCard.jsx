@@ -15,7 +15,8 @@ export default function ProductCard({ product }) {
   const contact = getContactForLang(lang);
   const { openContactModal } = useContactModal();
 
-  const category = product.category || CATEGORIES.find((c) => c.id === product.categoryId);
+  const categories = product.categories || (product.category ? [product.category] : []);
+  const fallbackCategory = CATEGORIES.find((c) => c.id === product.categoryId);
 
   const chatMsg = encodeURIComponent(
     `Hi, I'm interested in: ${localize(product.title)} (ID: ${product.customId || product._id})`
@@ -65,11 +66,19 @@ export default function ProductCard({ product }) {
       {/* Body */}
       <div className="p-4 flex flex-col flex-1">
         <div className="flex justify-between items-start mb-2 gap-2">
-          {category && (
+          {categories.length > 0 ? (
+            <div className="flex flex-wrap gap-1">
+              {categories.map((category) => (
+                <span key={category.id} className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${CATEGORY_COLOR}`}>
+                  {localize(category.label)}
+                </span>
+              ))}
+            </div>
+          ) : fallbackCategory ? (
             <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${CATEGORY_COLOR}`}>
-              {localize(category.label)}
+              {localize(fallbackCategory.label)}
             </span>
-          )}
+          ) : null}
           <span className="text-xs font-mono text-gray-500 bg-gray-50 px-2 py-1 rounded shrink-0 font-medium">
             ID: {product.customId || product._id?.substring(0, 8) || product._id}
           </span>

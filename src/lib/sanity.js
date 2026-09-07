@@ -51,16 +51,29 @@ const PRODUCT_CARD_PROJECTION = `
   condition,
   quantity,
   location ${LOCALIZED_STRING},
-  "categoryId": category->slug.current,
-  "category": category->{ "id": slug.current, "label": title ${LOCALIZED_STRING} },
+  "categoryIds": select(
+    category._type == "reference" => [category->slug.current],
+    category[]->slug.current
+  ),
+  "categoryId": coalesce(
+    category->slug.current,
+    category[0]->slug.current
+  ),
+  "categories": select(
+    category._type == "reference" => [category->{ "id": slug.current, "label": title ${LOCALIZED_STRING} }],
+    category[]->{ "id": slug.current, "label": title ${LOCALIZED_STRING} }
+  ),
+  "category": coalesce(
+    category->{ "id": slug.current, "label": title ${LOCALIZED_STRING} },
+    category[0]->{ "id": slug.current, "label": title ${LOCALIZED_STRING} }
+  ),
   "images": images[].asset->url
 `;
 
 /** Full product projection (for single product page) */
 const PRODUCT_FULL_PROJECTION = `
   ${PRODUCT_CARD_PROJECTION},
-  description ${LOCALIZED_STRING},
-  "category": category->{ id, title ${LOCALIZED_STRING} }
+  description ${LOCALIZED_STRING}
 `;
 
 // ── Queries ───────────────────────────────────────────────────────────────────
@@ -81,7 +94,7 @@ export const QUERY_CATEGORIES = `
  */
 export function buildProductsQuery({ category, status, offset = 0, limit = 12 } = {}) {
   const filters = ['_type == "product"'];
-  if (category) filters.push(`category->slug.current == $category`);
+  if (category) filters.push(`($category in category[]->slug.current || category->slug.current == $category)`);
   if (status)   filters.push(`status == $status`);
 
   return `{
@@ -103,7 +116,7 @@ export function buildProductBySlugQuery() {
  * Fetch similar products (same category, different slug, max N).
  */
 export function buildSimilarProductsQuery() {
-  return `*[_type == "product" && category->slug.current == $categoryId && slug.current != $slug] | order(_createdAt desc) [0...$limit] {
+  return `*[_type == "product" && (count(category[]->slug.current[@ in $categoryIds]) > 0 || category->slug.current in $categoryIds) && slug.current != $slug] | order(_createdAt desc) [0...$limit] {
     ${PRODUCT_CARD_PROJECTION}
   }`;
 }

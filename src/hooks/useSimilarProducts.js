@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { sanityClient, isSanityConfigured, buildSimilarProductsQuery, buildProductsQuery } from '../lib/sanity.js';
 import { MOCK_PRODUCTS } from '../lib/mockData.js';
 
-export function useSimilarProducts(categoryId, slug, limit = 4) {
+export function useSimilarProducts(categoryIds, slug, limit = 4) {
   const [similar, setSimilar] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -12,14 +12,14 @@ export function useSimilarProducts(categoryId, slug, limit = 4) {
 
     if (isSanityConfigured) {
       sanityClient
-        .fetch(buildSimilarProductsQuery(), { categoryId, slug, limit })
+        .fetch(buildSimilarProductsQuery(), { categoryIds, slug, limit })
         .then((data) => {
           if (cancelled) return;
           if (data.length < limit) {
             // Need to pad with other products
             const remaining = limit - data.length;
             sanityClient
-              .fetch(`*[_type == "product" && category->slug.current != $categoryId && slug.current != $slug] | order(_createdAt desc) [0...$remaining] {
+              .fetch(`*[_type == "product" && count(category[]->slug.current[@ in $categoryIds]) == 0 && !(category->slug.current in $categoryIds) && slug.current != $slug] | order(_createdAt desc) [0...$remaining] {
                 _id,
                 "slug": slug.current,
                 title,
@@ -27,10 +27,12 @@ export function useSimilarProducts(categoryId, slug, limit = 4) {
                 condition,
                 quantity,
                 location,
-                "categoryId": category->slug.current,
-                "category": category->{ "id": slug.current, "label": title },
+                "categoryIds": select(category._type == "reference" => [category->slug.current], category[]->slug.current),
+                "categoryId": coalesce(category->slug.current, category[0]->slug.current),
+                "categories": select(category._type == "reference" => [category->{ "id": slug.current, "label": title }], category[]->{ "id": slug.current, "label": title }),
+                "category": coalesce(category->{ "id": slug.current, "label": title }, category[0]->{ "id": slug.current, "label": title }),
                 "images": images[].asset->url
-              }`, { categoryId, slug, remaining })
+              }`, { categoryIds, slug, remaining })
               .then((padData) => {
                 if (!cancelled) {
                   setSimilar([...data, ...padData]);
@@ -50,14 +52,14 @@ export function useSimilarProducts(categoryId, slug, limit = 4) {
         });
     } else {
       const similarByCategory = MOCK_PRODUCTS.filter(
-        (p) => p.categoryId === categoryId && p.slug !== slug
+        (p) => (p.categoryIds || [p.categoryId]).some((id) => categoryIds.includes(id)) && p.slug !== slug
       );
       let sim = similarByCategory.slice(0, limit);
 
       if (sim.length < limit) {
         const remainingCount = limit - sim.length;
         const paddingProducts = MOCK_PRODUCTS.filter(
-          (p) => p.categoryId !== categoryId && p.slug !== slug
+          (p) => !(p.categoryIds || [p.categoryId]).some((id) => categoryIds.includes(id)) && p.slug !== slug
         ).slice(0, remainingCount);
         sim = [...sim, ...paddingProducts];
       }
@@ -68,7 +70,7 @@ export function useSimilarProducts(categoryId, slug, limit = 4) {
     return () => {
       cancelled = true;
     };
-  }, [categoryId, slug, limit]);
+  }, [categoryIds, slug, limit]);
 
   return { similar, isLoading };
 }

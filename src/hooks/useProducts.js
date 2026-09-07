@@ -73,7 +73,7 @@ export function useProducts(filters) {
         if (cancelled) return;
 
         const filtered = MOCK_PRODUCTS.filter((p) => {
-          if (filters.category && p.categoryId !== filters.category) return false;
+          if (filters.category && !(p.categoryIds || [p.categoryId]).includes(filters.category)) return false;
           if (filters.status   && p.status     !== filters.status)   return false;
           if (filters.search) {
             const q   = filters.search.toLowerCase();

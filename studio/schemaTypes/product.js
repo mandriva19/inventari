@@ -50,10 +50,14 @@ export const product = {
     {
       name: 'category',
       title: 'Category',
-      type: 'reference',
-      to: [{ type: 'category' }],
+      type: 'array',
+      of: [{
+        type: 'reference',
+        to: [{ type: 'category' }],
+      }],
       group: 'details',
-      validation: (Rule) => Rule.required(),
+      description: 'Select one or more categories for this product.',
+      validation: (Rule) => Rule.required().min(1),
     },
     {
       name: 'status',

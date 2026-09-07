@@ -39,7 +39,7 @@ export default function ProductPage({ slug }) {
           <p className="text-xl font-semibold text-gray-900 mb-6">
             Product not found.
           </p>
-          <Link to="/" className="inline-flex items-center justify-center bg-[#3665f3] hover:bg-[#2b51c2] text-white font-bold uppercase tracking-wider px-6 py-3 transition-colors rounded-none">
+          <Link to="/" className="inline-flex items-center justify-center bg-[#3665f3] hover:bg-[#2b51c2] text-white font-bold uppercase tracking-wider px-6 py-3 transition-colors rounded-[30px]">
             {t('product.back')}
           </Link>
         </div>
@@ -47,8 +47,9 @@ export default function ProductPage({ slug }) {
     );
   }
 
-  const category = product.category || CATEGORIES.find((c) => c.id === product.categoryId);
-  const categoryLabel = category?.title || category?.label;
+  const categories = product.categories || (product.category ? [product.category] : []);
+  const fallbackCategory = CATEGORIES.find((c) => c.id === product.categoryId);
+  const categoryLabel = categories[0]?.label || fallbackCategory?.label;
 
   /* ── Meta grid items ── */
   const metaItems = [
@@ -102,25 +103,20 @@ export default function ProductPage({ slug }) {
         {/* ── RIGHT: info ── */}
         <div className="flex flex-col gap-6">
 
-          {/* Top row: category label + status badge */}
-          <div className="flex items-center flex-wrap gap-3">
-            {category && (
-              <span className="text-xs font-bold uppercase tracking-wider text-gray-500">
-                {localize(category.label)}
-              </span>
-            )}
+          {/* Availability */}
+          <div>
             {product.status && (
               <MetaBadge type="status" value={product.status} />
             )}
           </div>
 
           {/* Title */}
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-gray-900 leading-tight">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-gray-900 leading-tight px-5">
             {localize(product.title)}
           </h1>
 
           {/* Description */}
-          <p className="text-base lg:text-lg text-gray-600 leading-relaxed whitespace-pre-wrap">
+          <p className="text-base lg:text-lg text-gray-600 bg-[#02020203] border-1 border-[#3665f303] rounded-lg leading-relaxed p-5">
             {localize(product.description)}
           </p>
 
@@ -141,7 +137,7 @@ export default function ProductPage({ slug }) {
       {/* ── Similar products ── */}
       <div className="mt-16 lg:mt-24">
         <SimilarProducts
-          categoryId={product.categoryId}
+          categoryIds={product.categoryIds || (product.categoryId ? [product.categoryId] : [])}
           slug={product.slug}
           limit={4}
         />
