@@ -117,7 +117,7 @@ export default function ProductPage({ slug }) {
 
           {/* Description */}
           {/* Description */}
-          <pre className="text-base lg:text-lg text-gray-600 bg-[#02020203] border-1 border-[#3665f303] rounded-lg leading-relaxed p-5 whitespace-pre-wrap break-words overflow-auto max-h-[400px]">
+          <pre className="text-base lg:text-lg text-gray-600 bg-[#02020203] border-1 border-[#3665f303] rounded-lg leading-relaxed p-5 whitespace-pre-wrap break-words overflow-y-scroll max-h-[400px] scrollbar-primary scrollbar-gutter-stable">
             {localize(product.description)}
           </pre>
 

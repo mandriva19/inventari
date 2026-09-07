@@ -7,6 +7,24 @@
 }
 
 @layer utilities {
+  .scrollbar-gutter-stable {
+    scrollbar-gutter: stable both-edges;
+  }
+  .scrollbar-primary {
+    scrollbar-width: thin;
+    scrollbar-color: #3b82f6 #bfdbfe; /* thumb then track */
+  }
+  .scrollbar-primary::-webkit-scrollbar {
+    width: 8px;
+  }
+  .scrollbar-primary::-webkit-scrollbar-track {
+    background: #bfdbfe;
+  }
+  .scrollbar-primary::-webkit-scrollbar-thumb {
+    background: #3b82f6;
+    border-radius: 9999px;
+  }
+
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
   }
