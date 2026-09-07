@@ -20,6 +20,7 @@ export default function ImageSwiper({ images = [], alt = '' }) {
   const pointersRef = useRef(new Map());
   const pinchRef = useRef(null);
   const didDragRef = useRef(false);
+  const swipeStartXRef = useRef(null);
 
   const resetView = () => {
     setZoom(1);
@@ -122,6 +123,28 @@ export default function ImageSwiper({ images = [], alt = '' }) {
     changeZoom(event.deltaY < 0 ? 0.5 : -0.5);
   };
 
+  const handleOverlayPointerDown = (event) => {
+    if (event.isPrimary) {
+      swipeStartXRef.current = event.clientX;
+    }
+  };
+
+  const handleOverlayPointerUp = (event) => {
+    if (swipeStartXRef.current !== null) {
+      const deltaX = event.clientX - swipeStartXRef.current;
+      const threshold = 50;
+      if (Math.abs(deltaX) > threshold && zoom === 1) {
+        if (deltaX > 0) {
+          setLightboxIndex((current) => (current - 1 + images.length) % images.length);
+        } else {
+          setLightboxIndex((current) => (current + 1) % images.length);
+        }
+        resetView();
+      }
+      swipeStartXRef.current = null;
+    }
+  };
+
   useEffect(() => {
     if (lightboxIndex === null) return undefined;
 
@@ -199,6 +222,8 @@ export default function ImageSwiper({ images = [], alt = '' }) {
           onClick={(event) => {
             if (event.target === event.currentTarget) closeLightbox();
           }}
+          onPointerDown={handleOverlayPointerDown}
+          onPointerUp={handleOverlayPointerUp}
         >
           <div className="relative flex h-full w-full items-center justify-center">
             <img
