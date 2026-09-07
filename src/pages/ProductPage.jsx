@@ -116,7 +116,8 @@ export default function ProductPage({ slug }) {
           </h1>
 
           {/* Description */}
-          <p className="text-base lg:text-lg text-gray-600 bg-[#02020203] border-1 border-[#3665f303] rounded-lg leading-relaxed p-5 whitespace-pre-wrap break-words">
+          {/* Description */}
+          <p className="text-base lg:text-lg text-gray-600 bg-[#02020203] border-1 border-[#3665f303] rounded-lg leading-relaxed p-5 whitespace-pre-line break-words">
             {localize(product.description)}
           </p>
 
