@@ -117,9 +117,9 @@ export default function ProductPage({ slug }) {
 
           {/* Description */}
           {/* Description */}
-          <p className="text-base lg:text-lg text-gray-600 bg-[#02020203] border-1 border-[#3665f303] rounded-lg leading-relaxed p-5 whitespace-pre-line break-words">
+          <pre className="text-base lg:text-lg text-gray-600 bg-[#02020203] border-1 border-[#3665f303] rounded-lg leading-relaxed p-5 whitespace-pre-wrap break-words overflow-auto max-h-[400px]">
             {localize(product.description)}
-          </p>
+          </pre>
 
           {/* Meta attributes */}
           <MetaGrid items={metaItems} />
