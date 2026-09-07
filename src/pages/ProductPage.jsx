@@ -4,7 +4,7 @@ import { useLocalizedField } from '../hooks/useLocalizedField';
 import { useProduct } from '../hooks/useProduct';
 import { CATEGORIES } from '../lib/mockData';
 
-import ImageSwiper    from '../components/product/ImageSwiper';
+import LightboxGallery from '../components/product/Lightbox';
 import { MetaBadge, MetaGrid } from '../components/product/MetaBadge';
 import ContactCTA     from '../components/product/ContactCTA';
 import SimilarProducts from '../components/product/SimilarProducts';
@@ -94,7 +94,7 @@ export default function ProductPage({ slug }) {
 
         {/* ── LEFT: gallery ── */}
         <div className="min-w-0">
-          <ImageSwiper
+          <LightboxGallery
             images={product.images || []}
             alt={localize(product.title)}
           />
