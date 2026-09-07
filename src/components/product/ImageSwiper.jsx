@@ -17,6 +17,8 @@ export default function ImageSwiper({ images = [], alt = '' }) {
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const dragRef = useRef(null);
+  const pointersRef = useRef(new Map());
+  const pinchRef = useRef(null);
   const didDragRef = useRef(false);
 
   const resetView = () => {
@@ -47,21 +49,51 @@ export default function ImageSwiper({ images = [], alt = '' }) {
   };
 
   const handleImagePointerDown = (event) => {
-    if (zoom <= 1) return;
-
     event.preventDefault();
     event.currentTarget.setPointerCapture(event.pointerId);
-    didDragRef.current = false;
-    dragRef.current = {
-      pointerId: event.pointerId,
-      startX: event.clientX,
-      startY: event.clientY,
-      panX: pan.x,
-      panY: pan.y,
-    };
+    pointersRef.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
+
+    if (pointersRef.current.size === 2) {
+      const [first, second] = [...pointersRef.current.values()];
+      pinchRef.current = {
+        startDistance: Math.hypot(second.x - first.x, second.y - first.y),
+        startZoom: zoom,
+      };
+      dragRef.current = null;
+      didDragRef.current = true;
+      return;
+    }
+
+    if (zoom > 1) {
+      didDragRef.current = false;
+      dragRef.current = {
+        pointerId: event.pointerId,
+        startX: event.clientX,
+        startY: event.clientY,
+        panX: pan.x,
+        panY: pan.y,
+      };
+    }
   };
 
   const handleImagePointerMove = (event) => {
+    if (!pointersRef.current.has(event.pointerId)) return;
+
+    pointersRef.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
+
+    if (pinchRef.current && pointersRef.current.size >= 2) {
+      const [first, second] = [...pointersRef.current.values()];
+      const distance = Math.hypot(second.x - first.x, second.y - first.y);
+      const nextZoom = Math.min(Math.max(
+        pinchRef.current.startZoom * (distance / Math.max(pinchRef.current.startDistance, 1)),
+        1,
+      ), 3);
+
+      setZoom(nextZoom);
+      if (nextZoom === 1) setPan({ x: 0, y: 0 });
+      return;
+    }
+
     if (!dragRef.current || dragRef.current.pointerId !== event.pointerId) return;
 
     if (Math.abs(event.clientX - dragRef.current.startX) > 4 || Math.abs(event.clientY - dragRef.current.startY) > 4) {
@@ -75,10 +107,14 @@ export default function ImageSwiper({ images = [], alt = '' }) {
   };
 
   const handleImagePointerUp = (event) => {
+    pointersRef.current.delete(event.pointerId);
+
     if (dragRef.current?.pointerId === event.pointerId) {
       dragRef.current = null;
       event.currentTarget.releasePointerCapture(event.pointerId);
     }
+
+    if (pointersRef.current.size < 2) pinchRef.current = null;
   };
 
   const handleImageWheel = (event) => {

@@ -127,6 +127,7 @@ export default function ProductPage({ slug }) {
           <div className="mt-4">
             <ContactCTA
               productId={product._id}
+              productCustomId={product.customId}
               productTitle={product.title}
               size="lg"
             />

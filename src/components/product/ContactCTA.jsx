@@ -2,13 +2,15 @@ import { useTranslation } from 'react-i18next';
 import { useLocalizedField } from '../../hooks/useLocalizedField';
 import { useContactModal } from '../../contexts/ContactModalContext';
 
-export default function ContactCTA({ productId, productTitle, size = 'md' }) {
+export default function ContactCTA({ productId, productTitle, productCustomId, size = 'md' }) {
   const { t } = useTranslation();
   const localize = useLocalizedField();
   const { openContactModal } = useContactModal();
 
   // Create a pseudo product object if we want to pass context to the modal
-  const product = productId ? { _id: productId, title: productTitle } : null;
+  const product = productId
+    ? { _id: productId, customId: productCustomId, title: productTitle }
+    : null;
 
   // Uniform CTA classes for both sizes: uppercase, large padding, simple hover
   const baseClass = "group w-full flex items-center justify-center gap-3 bg-[#3665f3] text-white font-bold uppercase tracking-wider transition-colors rounded-[30px] cursor-pointer";
