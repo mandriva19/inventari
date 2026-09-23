@@ -1,11 +1,13 @@
-import { useState, useCallback } from 'react';
+import { useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import FilterBar from '../components/catalog/FilterBar';
 import ProductGrid from '../components/catalog/ProductGrid';
 import { useProducts } from '../hooks/useProducts';
 
 export default function HomePage({ isScrolled }) {
-  const [activeCategory, setActiveCategory] = useState(null);
-  const [activeStatus, setActiveStatus]     = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeCategory = searchParams.get('category');
+  const activeStatus = searchParams.get('status');
 
   const filters = {
     category: activeCategory,
@@ -15,10 +17,32 @@ export default function HomePage({ isScrolled }) {
 
   const { products, hasMore, loadMore, isLoading, total } = useProducts(filters);
 
+  const setActiveCategory = (cat) => {
+    const newParams = new URLSearchParams(searchParams);
+    if (cat) {
+      newParams.set('category', cat);
+    } else {
+      newParams.delete('category');
+    }
+    setSearchParams(newParams);
+  };
+
+  const setActiveStatus = (status) => {
+    const newParams = new URLSearchParams(searchParams);
+    if (status) {
+      newParams.set('status', status);
+    } else {
+      newParams.delete('status');
+    }
+    setSearchParams(newParams);
+  };
+
   const handleClearFilters = useCallback(() => {
-    setActiveCategory(null);
-    setActiveStatus(null);
-  }, []);
+    const newParams = new URLSearchParams(searchParams);
+    newParams.delete('category');
+    newParams.delete('status');
+    setSearchParams(newParams);
+  }, [searchParams, setSearchParams]);
 
   return (
     <>

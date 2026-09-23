@@ -1,5 +1,6 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { getContactForLang } from '../../config/contact';
 import { useContactModal } from '../../contexts/ContactModalContext';
 import { useSettings } from '../../contexts/SettingsContext';
@@ -20,9 +21,18 @@ export default function TopBar({ isScrolled }) {
   const { openContactModal } = useContactModal();
   const settings = useSettings();
   const localize = useLocalizedField();
-
+  const [searchParams, setSearchParams] = useSearchParams();
+  useEffect(() => {
+    const urlLang = searchParams.get('lang');
+    if (urlLang && urlLang !== i18n.language) {
+      i18n.changeLanguage(urlLang);
+    }
+  }, []);
   const handleLangChange = (code) => {
     i18n.changeLanguage(code);
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set('lang', code);
+    setSearchParams(newParams);
   };
 
   return (
