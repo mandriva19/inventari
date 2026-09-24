@@ -8,6 +8,7 @@ import Footer      from './components/layout/Footer';
 import HomePage    from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
 import StudioPage  from './pages/StudioPage';
+import MessengerButton from './components/layout/MessengerButton';
 import { ContactModalProvider } from './contexts/ContactModalContext';
 import ContactModal from './components/layout/ContactModal';
 import { SettingsProvider } from './contexts/SettingsContext';
@@ -55,6 +56,7 @@ function AppShell() {
           <Route path="*"              element={<HomePage    isScrolled={isScrolled} />} />
         </Routes>
         <Footer />
+        <MessengerButton />
       </div>
     </>
   );
